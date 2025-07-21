@@ -1,0 +1,174 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management System</title>
+    <link rel="stylesheet" href="inventory-styles.css">
+</head>
+
+<body>
+    <script>
+        if (!localStorage.getItem('authenticated')) {
+            window.location.href = 'login.html';
+        }
+    </script>
+
+    <div id="sidebar">
+        <div id="main-logo">
+            <img src="pic.jpg" alt="Logo">
+        </div>
+        <button onclick="toggleTab('dashboard')" class="small-button">Dashboard</button>
+        <div class="dropdown">
+            <button onclick="toggleDropdown('storage')" class="small-button" id="storage-tab">Storage</button>
+            <div id="storageDropdown" class="dropdown-content">
+                <button onclick="toggleTab('newItemInputs')" class="small-button">Enter a New Item</button>
+                <button onclick="toggleTab('searchManufacturerInputs')" class="small-button">Search by Manufacturer</button>
+                <button onclick="sortItem()" class="small-button">Sort Items by Name</button>
+                <button onclick="displayItem()" class="small-button">Display Current Content</button>
+            </div>
+        </div>
+
+        <button onclick="toggleTab('sales')" class="small-button">Sales</button>
+        <button onclick="toggleTab('purchases')" class="small-button">Purchases</button>
+        <button onclick="saveItem()" class="small-button">Save to File</button>
+        <button onclick="loadItem()" class="small-button">Load from File</button>
+        <button onclick="exitProgram()" class="small-button">Logout</button>
+    </div>
+
+
+
+    <div id="main-content">
+        <header>
+            <h1>Inventory Management System</h1>
+        </header>
+
+        <main>
+            <div id="newItemInputs" class="tab-content">
+                <label for="newItemName">Name:</label>
+                <input type="text" id="newItemName" placeholder="Enter name">
+                <label for="newItemManufacturer">Manufacturer:</label>
+                <input type="text" id="newItemManufacturer" placeholder="Enter manufacturer">
+                <label for="newItemPrice">Price:</label>
+                <input type="text" id="newItemPrice" placeholder="Enter price">
+                <label for="newItemAvailable">Available:</label>
+                <input type="text" id="newItemAvailable" placeholder="Enter available">
+                <button onclick="enterItem()" class="medium-button">Enter a New Item</button>
+            </div>
+
+            <div id="searchManufacturerInputs" class="tab-content">
+                <label for="searchManufacturer">Search by Manufacturer:</label>
+                <input type="text" id="searchManufacturer" placeholder="Enter manufacturer">
+                <button onclick="searchItem()" class="medium-button">Search by Manufacturer</button>
+            </div>
+
+            <div id="editItemInputs" class="tab-content">
+                <label for="editItemName">Name:</label>
+                <input type="text" id="editItemName" placeholder="Enter name">
+                <label for="editItemManufacturer">Manufacturer:</label>
+                <input type="text" id="editItemManufacturer" placeholder="Enter manufacturer">
+                <label for="editItemPrice">Price:</label>
+                <input type="text" id="editItemPrice" placeholder="Enter price">
+                <label for="editItemAvailable">Available:</label>
+                <input type="text" id="editItemAvailable" placeholder="Enter available">
+                <button id="updateItemButton" class="medium-button">Update Item</button>
+            </div>
+
+            <div id="deleteItemInputs" class="tab-content">
+                <label for="deleteItemName">Name:</label>
+                <input type="text" id="deleteItemName" placeholder="Enter name">
+                <button onclick="deleteItem()" class="medium-button">Delete Item</button>
+            </div>
+
+            <div id="dashboard" class="tab-content">
+                <h2>Dashboard</h2>
+                <!-- pending -->
+            </div>
+
+            <div id="sales" class="tab-content">
+                <h2>Sales</h2>
+                <button onclick="toggleTab('addSales')" class="large-button">Add Sales</button>
+                <button onclick="sortItemsByHighestAvailability()" class="large-button">Sort by Highest Availability</button>
+                <button onclick="viewSales()" class="large-button">View Sales</button>
+            
+                <table id="salesTable">
+                    <thead>
+                        <tr>
+                            <th>Sno</th>
+                            <th>Item Name</th>
+                            <th>Manufacturer</th>
+                            <th>Quantity</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div id="addSales" class="tab-content">
+                <h2>Add Sales</h2>
+                <label for="salesItemName">Item Name:</label>
+                <input type="text" id="salesItemName" placeholder="Enter item name">
+                <label for="salesManufacturer">Manufacturer:</label>
+                <input type="text" id="salesManufacturer" placeholder="Enter manufacturer">
+                <label for="salesQuantity">Quantity:</label>
+                <input type="text" id="salesQuantity" placeholder="Enter quantity">
+                <button onclick="addSales()" class="large-button">Add Sales</button>
+            </div>
+
+            <div id="purchases" class="tab-content">
+                <h2>Purchases</h2>
+                <button onclick="toggleTab('addPurchase')" class="large-button">Add Purchase</button>
+                <button onclick="sortItemsByLowestAvailability()" class="large-button">Sort by Lowest Availability</button>
+                <button onclick="viewPurchases()" class="large-button">View Purchases</button>
+            
+                <table id="purchasesTable">
+                    <thead>
+                        <tr>
+                            <th>Sno</th>
+                            <th>Item Name</th>
+                            <th>Manufacturer</th>
+                            <th>Quantity</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            
+            <div id="addPurchase" class="tab-content">
+                <h2>Add Purchase</h2>
+                <label for="purchaseItemName">Item Name:</label>
+                <input type="text" id="purchaseItemName" placeholder="Enter item name">
+                <label for="purchaseManufacturer">Manufacturer:</label>
+                <input type="text" id="purchaseManufacturer" placeholder="Enter manufacturer">
+                <label for="purchaseQuantity">Quantity:</label>
+                <input type="text" id="purchaseQuantity" placeholder="Enter quantity">
+                <button onclick="addPurchase()" class="large-button">Add Purchase</button>
+            </div>
+            <div id="pagination">
+                <button onclick="prevPage()" class="pagination-button">Previous Page</button>
+                <span id="currentPage">Page 1</span>
+                <button onclick="nextPage()" class="pagination-button">Next Page</button>
+            </div>
+            <table id="inventoryTable">
+                <thead>
+                    <tr>
+                        <th>SNO</th>
+                        <th>Name</th>
+                        <th>Manufacturer</th>
+                        <th>Price</th>
+                        <th>Available</th>
+                        <th colspan="2">Action</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </main>
+    </div>
+    
+    <!-- The following script tags to include the SheetJS library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script src="inventory-script.js"></script>
+</body>
+
+</html>

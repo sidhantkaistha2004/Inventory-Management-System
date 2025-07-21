@@ -1,0 +1,160 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    margin: 0;
+    height: 100vh;
+}
+
+#sidebar {
+    background-color: black; /* Change background color to black */
+    color: white; /* Change text color to white */
+    padding: 20px;
+    width: 200px;
+    height:auto;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    position: relative; /* Add position relative to position the image */
+}
+
+#sidebar img {
+    width: 40%; /* Make sure the image takes 100% width of the sidebar */
+    margin-bottom: 20px;
+    border-radius: 50%; /* Make the image circular */
+}
+
+#main-content {
+    flex: 1;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    background-color: #f2f2f2;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    color: white; /* Set initial text color to white */
+    background-color: black; /* Set initial background color to black */
+    transition: background-color 0.3s, color 0.3s; /* Add smooth transition effect */
+}
+button:hover {
+    background-color: white; /* Invert background color on hover */
+    color: black; /* Invert text color on hover */
+}
+
+.main-content button {
+    width: auto;
+}
+
+main {
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    display: none; /* Initially hide the table */
+}
+
+th,
+td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.tab-content {
+    padding: 5px;
+    margin-top: 5px;
+    display: none; /* Initially hide the tab content */
+}
+
+.large-button {
+    padding: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    width: auto;
+}
+
+.small-button {
+    background-color: black; /* Set initial background color to black */
+    color: white; /* Set initial text color to white */
+    padding: 8px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; /* Adding smooth transition effect */
+}
+.medium-button {
+    width: auto;
+    height: 35px;
+    background-color: black; /* Set initial background color to black */
+    color: white; /* Set initial text color to white */
+    padding: 8px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; /* Add smooth transition effect */
+}
+
+.small-button:hover {
+    background-color: white; /* Invert background color on hover */
+    color: black; /* Invert text color on hover */
+}
+
+#logout-container {
+    position: absolute;
+    bottom: 10px;
+    left: 10x;
+    background-color: black; /* Set initial background color to black */
+    color: white; /* Set initial text color to white */
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s; /* Add smooth transition effect */
+}
+#logout-container:hover {
+    background-color: white; /* Invert background color on hover */
+    color: black; /* Invert text color on hover */
+}
+
+.hidden {
+    display: none;
+}
+
+.dropdown-content button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    text-align: left;
+    color: white; /* Set initial text color to white */
+    background-color: black; /* Set initial background color to black */
+    transition: background-color 0.3s, color 0.3s; /* Add smooth transition effect */
+}
+.dropdown-content button:hover {
+    background-color: white; /* Invert background color on hover */
+    color: black; /* Invert text color on hover */
+}
+#pagination {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.pagination-button {
+    width: 50px; /* Set the width and height to make the button square */
+    height: 50px;
+    padding: 5px;
+    font-size: 10px; /* Adjust the font size as needed */
+}

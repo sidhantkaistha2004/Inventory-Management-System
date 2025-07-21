@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Inventory Management System</title>
+    <link rel="stylesheet" href="login-styles.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Inventory Management System</h1>
+    </header>
+
+    <main>
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" required>
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" required>
+            <br>
+            <button type="button" onclick="authenticateUser()">Login</button>
+        </form>
+        <div id="error" style="color: red;"></div>
+    </main>
+
+    <script src="login-script.js"></script>
+
+</body>
+
+</html>
