@@ -19,7 +19,6 @@
 
 ## ✨ Demo
 
-> **Note:** _Replace the image below with a screenshot of your app in action!_
 
 <img width="1919" height="942" alt="image" src="https://github.com/user-attachments/assets/cac87e51-973c-4c64-b9ee-b7e406a3449a" />
 
